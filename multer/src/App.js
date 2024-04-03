@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 
 function App() {
   const [file, setFile] = useState(null); // State to store the selected file
+  const [images, setImages] = useState([]); // State to store fetched images
 
   // Function to handle file input change
   const handleFileChange = (e) => {
@@ -34,13 +35,36 @@ function App() {
     }
   };
 
+  // Function to fetch all images
+  const fetchImages = async () => {
+    try {
+      console.log("Loading images...");
+      const response = await fetch("https://multer-f54g.onrender.com/images");
+      const data = await response.json();
+      console.log("Images:", data);
+      setImages(data);
+    } catch (error) {
+      console.error("Error fetching images:", error);
+    }
+  };
+
+  // Fetch images when component mounts
+  useEffect(() => {
+    fetchImages();
+  }, []);
+
   return (
     <div className="App">
       <form onSubmit={handleSubmit}>
-        <input type="file" onChange={handleFileChange} /> {/* File input with onChange handler */}
+        <input type="file" onChange={handleFileChange} />
         <input type="text" value="image" />
         <input type="submit" />
       </form>
+      <div className="image-container">
+        {images.map((imageName, index) => (
+          <img key={index} src={`https://multer-f54g.onrender.com/images/${imageName}`} alt={imageName} />
+        ))}
+      </div>
     </div>
   );
 }
