@@ -27,7 +27,7 @@ function App() {
         method: "POST",
         body: formData,
       });
-      const data = await response.json(); // Parse the response JSON
+      const data = await response.text(); // Parse the response JSON
       console.log(data); // Log the response data
     } catch (error) {
       console.error("Error:", error); // Log any errors that occur
