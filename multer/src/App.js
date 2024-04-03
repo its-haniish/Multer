@@ -60,10 +60,11 @@ function App() {
         <input type="text" value="image" />
         <input type="submit" />
       </form>
-      <div className="image-container">
-        {images.map((imageName, index) => (
-          <img key={index} src={`https://multer-f54g.onrender.com/images/${imageName}`} alt={imageName} />
-        ))}
+      <div className="image-container" style={{ display: "flex", justifyContent: "flex-start", alignItems: "center", gap: "14px", flexDirection: "column" }}>
+        {images.map((elem, index) => {
+          console.log("image name:", elem.imageName);
+          return (<img width="100px" key={index} src={`https://multer-f54g.onrender.com/images/${elem.imageName}`} alt={elem.imageName} />)
+        })}
       </div>
     </div>
   );

@@ -12,7 +12,7 @@ const URI =
 app.use(express.json());
 app.use(cors());
 // Serve the images folder as a static directory
-app.use("/images", express.static(path.join(__dirname, "images")));
+app.use("/images", express.static(path.join(__dirname, "images/")));
 
 
 // Multer configuration
