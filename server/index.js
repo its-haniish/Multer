@@ -1,11 +1,15 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const cors = require("cors");
 const multer = require("multer");
 const path = require("path"); // Node.js module for working with file paths
 const fs = require("fs"); // Node.js module for file system operations
 const PORT = process.env.PORT || 8080;
 const URI = "mongodb+srv://allblogsdata:%40Hanish870807@cluster0.tdruxdp.mongodb.net/multer?retryWrites=true&w=majority";
+
+app.use(express.json());
+app.use(cors())
 
 // Multer configuration
 const storage = multer.diskStorage({

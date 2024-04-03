@@ -23,7 +23,7 @@ function App() {
 
     try {
       // Send a POST request to localhost:8080/save with the form data using fetch
-      const response = await fetch("http://localhost:8080/save", {
+      const response = await fetch("https://multer-f54g.onrender.com/save", {
         method: "POST",
         body: formData,
       });
